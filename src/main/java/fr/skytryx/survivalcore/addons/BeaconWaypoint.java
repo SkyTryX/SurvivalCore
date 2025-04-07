@@ -1,6 +1,6 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
-import fr.skytryx.pigmansurvie.Util;
+import fr.skytryx.survivalcore.Util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -34,7 +34,7 @@ public class BeaconWaypoint implements Listener {
         if (!event.getPlayer().isSneaking()) return;
         event.setCancelled(true);
         Inventory inventory = Bukkit.createInventory(null, 54, "§7Menu des waypoints");
-        final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "beacon.yml");
+        final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "beacon.yml");
         final YamlConfiguration beaconconfig = YamlConfiguration.loadConfiguration(beaconfile);
         if (!Objects.requireNonNull(beaconconfig.getConfigurationSection("")).getValues(false).isEmpty()) {
             AtomicInteger i = new AtomicInteger();
@@ -68,7 +68,7 @@ public class BeaconWaypoint implements Listener {
                 event.getWhoClicked().sendMessage("§c[Waypoint] §bTeleported to " + event.getCurrentItem().getItemMeta().getDisplayName());
             }
         } else if (event.getView().getTitle().equals("§7Waypoint Manager")) {
-            final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "beacon.yml");
+            final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "beacon.yml");
             final YamlConfiguration beaconconfig = YamlConfiguration.loadConfiguration(beaconfile);
             event.setCancelled(true);
             AtomicBoolean exists = new AtomicBoolean(false);
@@ -157,7 +157,7 @@ public class BeaconWaypoint implements Listener {
     @EventHandler
     public void ChatInput(AsyncPlayerChatEvent event){
         if(!queue_rename.isEmpty()){
-            final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "beacon.yml");
+            final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "beacon.yml");
             final YamlConfiguration beaconconfig = YamlConfiguration.loadConfiguration(beaconfile);
             if(queue_rename.containsKey(event.getPlayer().getUniqueId().toString())){
                 String msg = event.getMessage().replace("&", "§");
@@ -178,7 +178,7 @@ public class BeaconWaypoint implements Listener {
     public void OnBeaconBreak(BlockBreakEvent event) {
         if (event.getBlock().getType() != Material.BEACON) return;
         Block block = event.getBlock();
-        final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "beacon.yml");
+        final File beaconfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "beacon.yml");
         final YamlConfiguration beaconconfig = YamlConfiguration.loadConfiguration(beaconfile);
         Objects.requireNonNull(beaconconfig.getConfigurationSection("")).getValues(false).forEach((path, waypoint) -> {
             if (Objects.requireNonNull(beaconconfig.get(path + ".x")).toString().equals(String.valueOf(block.getX())) &&

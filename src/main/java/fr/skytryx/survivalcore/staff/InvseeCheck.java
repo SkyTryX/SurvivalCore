@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.staff;
+package fr.skytryx.survivalcore.staff;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

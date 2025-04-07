@@ -1,6 +1,5 @@
-package fr.skytryx.pigmansurvie.commands;
+package fr.skytryx.survivalcore.commands;
 
-import fr.skytryx.pigmansurvie.Util;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +20,7 @@ import static java.lang.Math.floorDiv;
 public class CommandXPBottle implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] args) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String @NotNull [] args) {
         if (!(commandSender instanceof Player)) return false;
         Player player=(Player) commandSender;
         int nb_flask = floorDiv((Math.toIntExact(Math.round(player.getTotalExperience()*0.9))), 50);

@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import java.util.ArrayList;
 import java.util.Arrays;

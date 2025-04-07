@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie;
+package fr.skytryx.survivalcore;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

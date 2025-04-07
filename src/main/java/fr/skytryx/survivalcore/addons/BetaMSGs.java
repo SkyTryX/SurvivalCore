@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -13,9 +13,9 @@ public class BetaMSGs implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         event.getPlayer().sendMessage("----------------------------\n"+
-                                         "§bBienvenue sur §6PigmanSMP"+
-                                         "§cCeci est une §c§lBETA, veuillez"+
-                                         "§creport les bugs sur discord!"+
+                                         "§bBienvenue sur §6PigmanSMP\n"+
+                                         "§cCeci est une §c§lBETA, veuillez\n"+
+                                         "§creport les bugs sur discord!\n"+
                                           "----------------------------");
     }
 

@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -72,7 +72,7 @@ public class LuckyBlockBreak implements Listener {
                     generateIronStructure(playerLocation);
                     break;
                 case 2:
-                    event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 200, 5));
+                    event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 200, 5));
                     break;
                 case 3:
                     event.getPlayer().setHealth(1);

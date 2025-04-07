@@ -1,6 +1,6 @@
-package fr.skytryx.pigmansurvie.commands;
+package fr.skytryx.survivalcore.commands;
 
-import fr.skytryx.pigmansurvie.Util;
+import fr.skytryx.survivalcore.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -17,10 +17,10 @@ import java.util.Objects;
 
 public class CommandSkill implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] strings) {
         if(!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         Inventory skill_inv = Bukkit.createInventory(null, 36, "§7Menu Skill");
         Util.StainedGlass(0,9, skill_inv);

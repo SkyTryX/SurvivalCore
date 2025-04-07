@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Boat;

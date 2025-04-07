@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.staff;
+package fr.skytryx.survivalcore.staff;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;

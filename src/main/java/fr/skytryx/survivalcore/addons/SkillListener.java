@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
@@ -52,7 +52,7 @@ public class SkillListener implements Listener {
         }
         BossBar xp_bar = BossBar.bossBar(Component.text("Gain de "+ xp + "XP en "+skill+" ("+ config.getInt(player.getUniqueId() + "."+skill+".xp") +"/" + (Math.pow(config.getInt(player.getUniqueId() + "." + skill + ".level") * 15, 2) + 100) + ")"), 0f, BossBar.Color.GREEN, BossBar.Overlay.PROGRESS);
         player.showBossBar(xp_bar);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")), () -> player.hideBossBar(xp_bar), 100L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")), () -> player.hideBossBar(xp_bar), 100L);
         try {
             config.save(file);
         } catch (IOException e) {
@@ -61,7 +61,7 @@ public class SkillListener implements Listener {
     }
     @EventHandler
     public void ProfileCreation(PlayerJoinEvent event){
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         if(skillconfig.get(event.getPlayer().getUniqueId().toString()) == null){
             Arrays.asList("farming", "mining", "excavating", "woodcutting", "fishing", "fighting", "bow-ing", "enchanting", "forging", "brewing").forEach(sk ->{
@@ -192,7 +192,7 @@ public class SkillListener implements Listener {
         put(EntityType.RAVAGER, 200f);
         put(EntityType.PUFFERFISH, 10f);
         put(EntityType.SALMON, 10f);
-        put(EntityType.SNOWMAN, 20f);
+        put(EntityType.SNOW_GOLEM, 20f);
         put(EntityType.SQUID, 10f);
         put(EntityType.STRAY, 20f);
         put(EntityType.STRIDER, 20f);
@@ -213,7 +213,7 @@ public class SkillListener implements Listener {
     @EventHandler
     public void XPGain(BlockBreakEvent event){
         if(event.getPlayer().getGameMode() != GameMode.SURVIVAL) return;
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         if(event.getBlock().getMetadata("PLACED").isEmpty()) {
             if (Miner.containsKey(event.getBlock().getType())) {
@@ -231,17 +231,17 @@ public class SkillListener implements Listener {
     @EventHandler
     public void AntiDupe(BlockPlaceEvent event){
         if(event.getPlayer().getGameMode() != GameMode.SURVIVAL) return;
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         if (Farmer.containsKey(event.getBlock().getType())) {
             GetXP("farming", skillconfig, event.getPlayer(), Farmer.get(event.getBlock().getType()), skillfile);
-        event.getBlock().setMetadata("PLACED", new FixedMetadataValue(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("PigmanSurvie")), "PLACED"));
+        event.getBlock().setMetadata("PLACED", new FixedMetadataValue(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("SurvivalCore")), "PLACED"));
         }
     }
 
     @EventHandler
     public void onEnchant(EnchantItemEvent event){
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         AtomicInteger lvl_total = new AtomicInteger();
         event.getEnchantsToAdd().forEach((ench, lvl) -> lvl_total.addAndGet(lvl));
@@ -251,7 +251,7 @@ public class SkillListener implements Listener {
     @EventHandler
     public void onInvSkill(InventoryClickEvent event){
         if(event.getClickedInventory() == null) return;
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         if(Objects.requireNonNull(event.getClickedInventory()).getType() == InventoryType.ANVIL){
             if(event.getSlot() == 2 && Objects.requireNonNull(event.getCurrentItem()).getType() != Material.AIR){
@@ -270,7 +270,7 @@ public class SkillListener implements Listener {
 
     @EventHandler
     public void onFishing(PlayerFishEvent event){
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         if(event.getState() != PlayerFishEvent.State.CAUGHT_FISH || event.getCaught() == null) return;
         Item itementity = (Item) event.getCaught();
@@ -287,7 +287,7 @@ public class SkillListener implements Listener {
         if(event.getEntity().getKiller() == null) return;
         if(Objects.requireNonNull(event.getEntity().getKiller()).getType() == EntityType.PLAYER){
             if(EntityXP.containsKey(event.getEntity().getType())){
-                final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+                final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
                 final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
                 if(Objects.requireNonNull(event.getEntity().getLastDamageCause()).getCause() == EntityDamageEvent.DamageCause.PROJECTILE){
                     GetXP("bow-ing", skillconfig, event.getEntity().getKiller(), EntityXP.get(event.getEntity().getType())*10, skillfile);
@@ -301,7 +301,7 @@ public class SkillListener implements Listener {
     @EventHandler
     public void DrinkPotion(PlayerItemConsumeEvent event){
         if(Material.POTION == event.getItem().getType()){
-            final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+            final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
             final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
             PotionMeta potionMeta = (PotionMeta) event.getItem().getItemMeta();
             float xp = 25f;
@@ -316,7 +316,7 @@ public class SkillListener implements Listener {
         if(!Arrays.asList(Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK).contains(event.getAction())) return;
         if(event.getItem() == null) return;
         if(Arrays.asList(Material.LINGERING_POTION, Material.SPLASH_POTION).contains(Objects.requireNonNull(event.getItem()).getType())){
-            final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+            final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
             final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
             PotionMeta potionMeta = (PotionMeta) event.getItem().getItemMeta();
             float xp = 75f;

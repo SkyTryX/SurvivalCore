@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.staff;
+package fr.skytryx.survivalcore.staff;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -25,7 +25,7 @@ public class XrayAlerts implements Listener {
                 if(player.isOp()) player.sendMessage("§c[Xray] §6"+event.getPlayer().getName()+" §ba miné §6"+XrayList.get(event.getPlayer())+" §bdiamants!");
             });
         }
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("PigmanSurvie")), () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("SurvivalCore")), () -> {
             XrayList.put(event.getPlayer(), XrayList.get(event.getPlayer())-1);
             if(XrayList.get(event.getPlayer()) == 0) XrayList.remove(event.getPlayer());
         }, 1200);

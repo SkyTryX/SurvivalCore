@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.commands;
+package fr.skytryx.survivalcore.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -19,10 +19,10 @@ import java.util.stream.Collectors;
 
 public class CommandLeaderboard implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] strings) {
         if(!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
-        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("PigmanSurvie")).getDataFolder(), "skills.yml");
+        final File skillfile = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("SurvivalCore")).getDataFolder(), "skills.yml");
         final YamlConfiguration skillconfig = YamlConfiguration.loadConfiguration(skillfile);
         Inventory lb = Bukkit.createInventory(null, 54, "§8Classement");
         HashMap<String, Integer>lb_list = new HashMap<>();

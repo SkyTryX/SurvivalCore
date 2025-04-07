@@ -1,17 +1,17 @@
-package fr.skytryx.pigmansurvie;
+package fr.skytryx.survivalcore;
 
-import fr.skytryx.pigmansurvie.addons.*;
-import fr.skytryx.pigmansurvie.commands.*;
-import fr.skytryx.pigmansurvie.staff.InvseeCheck;
-import fr.skytryx.pigmansurvie.staff.XrayAlerts;
-import fr.skytryx.pigmansurvie.staff.VillagerAlerts;
+import fr.skytryx.survivalcore.addons.*;
+import fr.skytryx.survivalcore.commands.*;
+import fr.skytryx.survivalcore.staff.InvseeCheck;
+import fr.skytryx.survivalcore.staff.XrayAlerts;
+import fr.skytryx.survivalcore.staff.VillagerAlerts;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
-public final class PigmanSurvie extends JavaPlugin {
+public final class SurvivalCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -47,12 +47,12 @@ public final class PigmanSurvie extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LuckyBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new BetaMSGs(), this);
 
-        Bukkit.getLogger().info("[PigmanSurvie] Le plugin a été activé");
+        Bukkit.getLogger().info("[SurvivalCore] Le plugin a été activé");
     }
 
     @Override
     public void onDisable() {
         this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
-        Bukkit.getLogger().info("[PigmanSurvie] Le plugin a été desactivé");
+        Bukkit.getLogger().info("[SurvivalCore] Le plugin a été desactivé");
     }
 }

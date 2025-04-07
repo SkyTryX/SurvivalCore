@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.addons;
+package fr.skytryx.survivalcore.addons;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Phantom;

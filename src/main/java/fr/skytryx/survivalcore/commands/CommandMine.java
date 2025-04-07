@@ -1,4 +1,4 @@
-package fr.skytryx.pigmansurvie.commands;
+package fr.skytryx.survivalcore.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
@@ -16,7 +16,7 @@ import java.util.Objects;
 public class CommandMine implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] strings) {
         if(!(commandSender instanceof Player)) return false;
         Player player = (Player) commandSender;
         if (strings.length == 1 && strings[0].equals("reload")){

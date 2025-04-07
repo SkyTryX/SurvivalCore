@@ -1,6 +1,6 @@
-package fr.skytryx.pigmansurvie.commands;
+package fr.skytryx.survivalcore.commands;
 
-import fr.skytryx.pigmansurvie.Util;
+import fr.skytryx.survivalcore.Util;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,7 +21,7 @@ public class CommandLuckyBlock implements CommandExecutor {
         put("Emerald", "fce6054d-f84a-4cfc-ac46-be5d0c9e7954");
     }};
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] strings) {
         if(strings[0].isEmpty() || !(commandSender instanceof Player)) return false;
         if(strings[0].equalsIgnoreCase("give")){
             if(strings[1].isEmpty()) return false;
