@@ -23,9 +23,27 @@ public class Util {
         ItemMeta IMStainedGlass = StainedGlass.getItemMeta();
         IMStainedGlass.displayName(Component.text(" "));
         StainedGlass.setItemMeta(IMStainedGlass);
-        for(int i = min; i < max; i++){
+        for(int i = min; i < max; i++)
             inv.setItem(i, StainedGlass);
-        }
+    }
+
+    // Fonction qui créé un item avec en paramètre un materiau, un nom
+    public static ItemStack CreateItem(Material mat, String name) {
+        ItemStack CreatedItem = new ItemStack(mat);
+        ItemMeta IMCreatedItem = CreatedItem.getItemMeta();
+        IMCreatedItem.displayName(Component.text(name));
+        CreatedItem.setItemMeta(IMCreatedItem);
+        return CreatedItem;
+    }
+
+    // Fonction qui créé un item avec en paramètre un materiau, un nom
+    public static ItemStack CreateItem(Material mat, String name, int number_items) {
+        ItemStack CreatedItem = new ItemStack(mat);
+        CreatedItem.setAmount(number_items);
+        ItemMeta IMCreatedItem = CreatedItem.getItemMeta();
+        IMCreatedItem.displayName(Component.text(name));
+        CreatedItem.setItemMeta(IMCreatedItem);
+        return CreatedItem;
     }
 
     // Fonction qui créé un item avec en paramètre un materiau, un nom et du lore
@@ -33,7 +51,8 @@ public class Util {
         ItemStack CreatedItem = new ItemStack(mat);
         ItemMeta IMCreatedItem = CreatedItem.getItemMeta();
         IMCreatedItem.displayName(Component.text(name));
-        if(!lore.isEmpty()) IMCreatedItem.setLore(lore);
+        if(!lore.isEmpty())
+            IMCreatedItem.setLore(lore);
         CreatedItem.setItemMeta(IMCreatedItem);
         return CreatedItem;
     }

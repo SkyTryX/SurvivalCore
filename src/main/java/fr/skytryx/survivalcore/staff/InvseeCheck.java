@@ -5,9 +5,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class InvseeCheck implements Listener {
+
+    // Déplacer ce code, mais il est important.
     @EventHandler
     public void InvseeUnDupe(InventoryClickEvent event){
-        if(event.getView().getTitle().equals("§8Classement")) event.setCancelled(true);
-        if(event.getView().getTitle().equals("§7Menu Skill")) event.setCancelled(true);
+        if(event.getView().getTitle().equals("§8Classement") || event.getView().getTitle().equals("§7Menu Skill"))
+            event.setCancelled(true);
     }
 }

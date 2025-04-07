@@ -12,11 +12,11 @@ public class BetaMSGs implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        event.getPlayer().sendMessage("&f----------------------------\n"+
+        event.getPlayer().sendMessage("§f----------------------------\n"+
                                          "§bBienvenue sur §6???SMP\n"+
-                                         "§cCeci est une §c§lBETA, &cveuillez\n"+
+                                         "§cCeci est une §c§lBETA, §cveuillez\n"+
                                          "§creport les bugs sur discord!\n"+
-                                          "&f----------------------------");
+                                          "§f----------------------------");
     }
 
     @EventHandler
