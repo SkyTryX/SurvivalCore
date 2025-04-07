@@ -13,6 +13,7 @@ import org.bukkit.block.data.type.Chest.Type;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -20,6 +21,12 @@ import org.bukkit.inventory.ItemStack;
 
 public class DeathChest implements Listener {
 
+    @EventHandler
+    public void DeathChestBreak(BlockBreakEvent event) {
+        if(event.getBlock().getType().equals(Material.CHEST) && Objects.requireNonNull(((Chest)event.getBlock()).getCustomName()).startsWith("§7Death Chest de")){
+                event.setCancelled(true);
+        }
+    }
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         final List<ItemStack> content = new ArrayList<>(event.getDrops());
@@ -66,7 +73,7 @@ public class DeathChest implements Listener {
             i++;
         }
             event.getDrops().clear();
-            event.getPlayer().sendMessage("§c[DeathChest] §bTu es mort au coordonnées suivantes: "+ loc.getBlockX()+" "+loc.getBlockY()+" "+loc.getBlockZ());
+            event.getPlayer().sendMessage("§c[DeathChest] §bTu es mort au coordonnées suivantes: §6"+ loc.getBlockX()+" "+loc.getBlockY()+" "+loc.getBlockZ());
         }
 
         @EventHandler

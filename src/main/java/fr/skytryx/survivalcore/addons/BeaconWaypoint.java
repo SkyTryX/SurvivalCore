@@ -58,9 +58,9 @@ public class BeaconWaypoint implements Listener {
                 event.getWhoClicked().closeInventory();
             } else if (Objects.requireNonNull(event.getCurrentItem()).getItemMeta().getDisplayName().equals("§bGérer Waypoint")) {
                 Inventory invmanager = Bukkit.createInventory(null, 9, "§7Waypoint Manager");
-                invmanager.setItem(0, Util.CreateItem(Material.ITEM_FRAME, "§bChanger le logo", Collections.singletonList("§bChanger le logo du waypoint")));
-                invmanager.setItem(1, Util.CreateItem(Material.NAME_TAG, "§bRenommer le waypoint", Collections.singletonList("§bChange le nom du waypoint")));
-                invmanager.setItem(2, Util.CreateItem(Material.CRAFTING_TABLE, "§bCréé un Waypoint", Collections.singletonList("§bCréé un nouveau waypoint")));
+                invmanager.setItem(0, Util.CreateItem(Material.ITEM_FRAME, "§bChanger le logo", Collections.singletonList("§7&lavec ce qui est dans votre main.")));
+                invmanager.setItem(1, Util.CreateItem(Material.NAME_TAG, "§bRenommer le waypoint", Collections.singletonList("§7&là écrire dans le chat")));
+                invmanager.setItem(2, Util.CreateItem(Material.CRAFTING_TABLE, "§bCréé un Waypoint", Collections.singletonList("§7&lnecessite un waypoint")));
                 invmanager.setItem(3, Util.CreateItem(Material.TNT, "§cSupprimer le Waypoint", Collections.singletonList("§cSupprimer un waypoint!")));
                 event.getWhoClicked().openInventory(invmanager);
             } else if (event.getSlot() >= 0 && event.getSlot() < 35) {

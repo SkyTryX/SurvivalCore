@@ -9,19 +9,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.Objects;
 
 public final class SurvivalCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        // On register les commandes
         Objects.requireNonNull(getCommand("mine")).setExecutor(new CommandMine());
         Objects.requireNonNull(getCommand("XPBottle")).setExecutor(new CommandXPBottle());
         Objects.requireNonNull(getCommand("skill")).setExecutor(new CommandSkill());
         Objects.requireNonNull(getCommand("leaderboard")).setExecutor(new CommandLeaderboard());
         Objects.requireNonNull(getCommand("luckyblock")).setExecutor(new CommandLuckyBlock());
 
+        // Génération du monde minage si il n'existe pas
         if(Bukkit.getWorld("mineworld") == null){
             new WorldCreator("mineworld").createWorld();
         }
@@ -33,12 +34,12 @@ public final class SurvivalCore extends JavaPlugin {
         //Util.CreateRecipe(Util.CreateHead("Redstone", CommandLuckyBlock.LB_Texture.get("Redstone")), Arrays.asList("SSS", "SCS", "SSS"), new HashMap<Character, Material>(){{put('C', Material.REDSTONE_BLOCK); put('S', Material.SCULK);}}, "Redstone_LB");
         //Util.CreateRecipe(Util.CreateHead("Emerald", CommandLuckyBlock.LB_Texture.get("Emerald")), Arrays.asList("LBL", "EDE", "LBL"), new HashMap<Character, Material>(){{put('L', Material.LAPIS_LAZULI); put('B', Material.LAPIS_BLOCK); put('E', Material.EMERALD_BLOCK); put('D', Material.DIAMOND);}}, "Emerald_LB");
 
+        // On register les events registerers
         getServer().getPluginManager().registerEvents(new XrayAlerts(), this);
         getServer().getPluginManager().registerEvents(new VillagerAlerts(), this);
         getServer().getPluginManager().registerEvents(new InvseeCheck(), this);
         getServer().getPluginManager().registerEvents(new DeathChest(), this);
         getServer().getPluginManager().registerEvents(new Duraping(), this);
-        getServer().getPluginManager().registerEvents(new BoatKill(), this);
         getServer().getPluginManager().registerEvents(new PhantomSize(), this);
         getServer().getPluginManager().registerEvents(new XPBottleListener(), this);
         getServer().getPluginManager().registerEvents(new FastLeavesDecay(), this);
@@ -46,13 +47,5 @@ public final class SurvivalCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SkillListener(), this);
         getServer().getPluginManager().registerEvents(new LuckyBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new BetaMSGs(), this);
-
-        Bukkit.getLogger().info("[SurvivalCore] Le plugin a été activé");
-    }
-
-    @Override
-    public void onDisable() {
-        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
-        Bukkit.getLogger().info("[SurvivalCore] Le plugin a été desactivé");
     }
 }

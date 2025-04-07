@@ -1,5 +1,6 @@
 package fr.skytryx.survivalcore;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,39 +17,42 @@ import java.util.UUID;
 
 public class Util {
 
+    // Fonction qui remplit un inventaire avec des stained glass (du slot min au slot max)
     public static void StainedGlass(int min, int max, Inventory inv){
-        ItemStack stainedglass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
-        ItemMeta imstainedglass = stainedglass.getItemMeta();
-        imstainedglass.setDisplayName(" ");
-        stainedglass.setItemMeta(imstainedglass);
+        ItemStack StainedGlass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemMeta IMStainedGlass = StainedGlass.getItemMeta();
+        IMStainedGlass.displayName(Component.text(" "));
+        StainedGlass.setItemMeta(IMStainedGlass);
         for(int i = min; i < max; i++){
-            inv.setItem(i, stainedglass);
+            inv.setItem(i, StainedGlass);
         }
     }
 
-
+    // Fonction qui créé un item avec en paramètre un materiau, un nom et du lore
     public static ItemStack CreateItem(Material mat, String name, List<String> lore) {
-        ItemStack item = new ItemStack(mat);
-        ItemMeta itemmeta = item.getItemMeta();
-        itemmeta.setDisplayName(name);
-        if(!lore.isEmpty()) itemmeta.setLore(lore);
-        item.setItemMeta(itemmeta);
-        return item;
+        ItemStack CreatedItem = new ItemStack(mat);
+        ItemMeta IMCreatedItem = CreatedItem.getItemMeta();
+        IMCreatedItem.displayName(Component.text(name));
+        if(!lore.isEmpty()) IMCreatedItem.setLore(lore);
+        CreatedItem.setItemMeta(IMCreatedItem);
+        return CreatedItem;
     }
+
+    // Fonction qui créé une recette de craft
     public static void CreateRecipe(ItemStack item, List<String> shape, Map<Character, Material> map, String name){
-        NamespacedKey key = new NamespacedKey(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("PigmanSurvie")), name);
+        NamespacedKey key = new NamespacedKey(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("SurvivalCore")), name);
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(shape.get(0), shape.get(1), shape.get(2));
         map.forEach(recipe::setIngredient);
         Bukkit.getServer().addRecipe(recipe);
     }
-
+    // Fonction qui créé un item sous forme de tête
     public static ItemStack CreateHead(String name, String owner){
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta headmeta = (SkullMeta) head.getItemMeta();
-        headmeta.setOwningPlayer(Objects.requireNonNull(Bukkit.getOfflinePlayer(UUID.fromString(owner))));
-        headmeta.setDisplayName("§6"+name+" §blucky block");
-        head.setItemMeta(headmeta);
-        return head;
+        ItemStack Head = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta IMHead = (SkullMeta) Head.getItemMeta();
+        IMHead.setOwningPlayer(Objects.requireNonNull(Bukkit.getOfflinePlayer(UUID.fromString(owner))));
+        IMHead.displayName(Component.text("§6"+name+" §bLucky Block"));
+        Head.setItemMeta(IMHead);
+        return Head;
     }
 }
