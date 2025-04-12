@@ -1,4 +1,4 @@
-package fr.skytryx.survivalcore.addons;
+package fr.skytryx.survivalcore.luckyblocks;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

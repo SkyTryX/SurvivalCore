@@ -1,4 +1,4 @@
-package fr.skytryx.survivalcore.addons;
+package fr.skytryx.survivalcore.skills;
 
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
