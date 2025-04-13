@@ -1,53 +1,53 @@
-@startuml
-'https://plantuml.com/class-diagram
+    @startuml
+    'https://plantuml.com/class-diagram
 
-abstract class Skills{
-+ abstract TypeMetier getType();
-}
+    abstract class Skills{
+    + abstract TypeMetier getType();
+    }
 
-class Miner{
+    class Miner{
 
-}
-class Brewing{
+    }
+    class Brewing{
 
-}
-class Forging{
+    }
+    class Forging{
 
-}
-class Enchanting{
+    }
+    class Enchanting{
 
-}
-class Bow-ing{
+    }
+    class Bow-ing{
 
-}
-class Fighting{
+    }
+    class Fighting{
 
-}
-class Fishing{
+    }
+    class Fishing{
 
-}
-class WoodCutting{
+    }
+    class WoodCutting{
 
-}
-class Excavating{
+    }
+    class Excavating{
 
-}
-class Farming{
+    }
+    class Farming{
 
-}
-enum TypeMetier {
+    }
+    enum TypeMetier {
 
-}
+    }
 
-Miner --|> Skills
-"Bow-ing" --|> Skills
-Farming --|> Skills
-Fishing --|> Skills
-Fighting --|> Skills
-WoodCutting --|> Skills
-Enchanting --|> Skills
-Excavating --|> Skills
-Brewing --|> Skills
-Forging --|> Skills
-TypeMetier --> Skills : Type Metier
-@enduml
+    Miner --|> Skills
+    "Bow-ing" --|> Skills
+    Farming --|> Skills
+    Fishing --|> Skills
+    Fighting --|> Skills
+    WoodCutting --|> Skills
+    Enchanting --|> Skills
+    Excavating --|> Skills
+    Brewing --|> Skills
+    Forging --|> Skills
+    TypeMetier --> Skills : Type Metier
+    @enduml
