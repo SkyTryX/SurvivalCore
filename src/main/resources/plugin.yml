@@ -1,7 +1,7 @@
 name: SurvivalCore
 version: '${project.version}'
 main: fr.skytryx.survivalcore.SurvivalCore
-api-version: 1.20
+api-version: 1.21.4
 commands:
   mine:
     description: teleports you to the mine world
