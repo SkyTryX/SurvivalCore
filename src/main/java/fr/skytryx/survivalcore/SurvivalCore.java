@@ -1,5 +1,6 @@
 package fr.skytryx.survivalcore;
 
+import fr.skytryx.survivalcore.Crafts.XPBottleCrafts;
 import fr.skytryx.survivalcore.addons.*;
 import fr.skytryx.survivalcore.commands.*;
 import fr.skytryx.survivalcore.luckyblocks.LuckyBlockBreak;
@@ -15,8 +16,11 @@ import java.util.Objects;
 
 public final class SurvivalCore extends JavaPlugin {
 
+    private static SurvivalCore instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         // On register les commandes
         Objects.requireNonNull(getCommand("mine")).setExecutor(new CommandMine());
         Objects.requireNonNull(getCommand("XPBottle")).setExecutor(new CommandXPBottle());
@@ -49,5 +53,14 @@ public final class SurvivalCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SkillListener(), this);
         getServer().getPluginManager().registerEvents(new LuckyBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new BetaMSGs(), this);
+
+        //On register les crafts
+        getServer().addRecipe(XPBottleCrafts.moyenneFlask());
+        getServer().addRecipe(XPBottleCrafts.grandeFlask());
+        getServer().addRecipe(XPBottleCrafts.enormeFlask());
+    }
+
+    public static SurvivalCore getInstance() {
+        return instance;
     }
 }
